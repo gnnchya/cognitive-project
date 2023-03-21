@@ -25,13 +25,13 @@ train_datagen = ImageDataGenerator(rescale=1./255)
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
-        '/Users/gnnchya/Documents/cognitive-keras/data_temp/train',
+        '/Users/fluke/Documents/GitHub/cognitive-project/data/train',
         target_size=(640, 640),
         batch_size=32,
         class_mode='categorical')
 
 validation_generator = test_datagen.flow_from_directory(
-        '/Users/gnnchya/Documents/cognitive-keras/data_temp/test',
+        '/Users/fluke/Documents/GitHub/cognitive-project/data/test',
         target_size=(640, 640),
         batch_size=32,
         class_mode='categorical')
@@ -45,7 +45,7 @@ print('here2')
 history = model.fit(train_generator, epochs=10, validation_data=validation_generator)
 
 # Save the model
-tf.saved_model.save(model, '/Users/gnnchya/Documents/cognitive-keras/model1/')
+tf.saved_model.save(model, '/Users/fluke/Documents/GitHub/cognitive-project/model3')
 
 
 

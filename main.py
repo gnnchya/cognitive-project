@@ -23,26 +23,26 @@ train_datagen = ImageDataGenerator(rescale=1./255)
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
-        '/Users/gnnchya/Documents/cognitive-keras/data/train',
+        '/Users/Tairo Kageyama/Documents/GitHub/cognitive-project/data/train',
         target_size=(640, 640),
         batch_size=32,
         class_mode='categorical')
 
 validation_generator = test_datagen.flow_from_directory(
-        '/Users/gnnchya/Documents/cognitive-keras/data/test',
+        '/Users/Tairo Kageyama/Documents/GitHub/cognitive-project/data/test',
         target_size=(640, 640),
         batch_size=32,
         class_mode='categorical')
 
 # Create the model
-model = create_model(num_classes=5)
+model = create_model(num_classes=28)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model
 history = model.fit(train_generator, epochs=10, validation_data=validation_generator)
 
 # Save the model
-tf.saved_model.save(model, '/Users/gnnchya/Documents/cognitive-keras/saved_model_many_multiclass2/')
+tf.saved_model.save(model, '/Users/Tairo Kageyama/Documents/GitHub/cognitive-project/model')
 
 
 #python -m tf2onnx.convert --saved-model /Users/gnnchya/Documents/cognitive-keras/saved_model_many_multiclass1 --output model4.onnx
